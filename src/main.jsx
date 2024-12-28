@@ -11,3 +11,7 @@ ReactDOM.createRoot(document.getElementById('root12')).render(<App12 />)
 // exercise 1.3
 import App13 from './App13'
 ReactDOM.createRoot(document.getElementById('root13')).render(<App13 />)
+
+// exercise 1.4
+import App14 from './App14'
+ReactDOM.createRoot(document.getElementById('root14')).render(<App14 />)
