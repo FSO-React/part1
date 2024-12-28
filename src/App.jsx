@@ -12,30 +12,18 @@ const Button = ({ onClick, text }) => {
   )
 }
 
-const Stat = ({ stat, amount }) => {
-  if (!amount || amount === 0) {
+const StatisticLine = ({ text, value }) => {
+  if (!value || value === 0) {
     return (
-      <p>{stat}: 0</p>
+      <p>{text}: 0</p>
     )
   }
   return (
-    <p>{stat}: {amount}</p>
-  )
-}
-
-const Percent = ({ text, amount }) => {
-  if (!amount || amount === 0) {
-    return (
-      <p>{text}: 0 %</p>
-    )
-  }
-  return (
-    <p>{text}: {amount} %</p>
+    <p>{text}: {value}</p>
   )
 }
 
 const Statistics = ({ good, neutral, bad, all}) => {
-
   const average = () => (good - bad) / all
   const positivePercent = () => (good / all) * 100
   
@@ -46,12 +34,12 @@ const Statistics = ({ good, neutral, bad, all}) => {
   }
   return (
     <>
-      <Stat stat='good' amount={good}></Stat>
-      <Stat stat='neutral' amount={neutral}></Stat>
-      <Stat stat='bad' amount={bad}></Stat>
-      <Stat stat='all' amount={all}></Stat>
-      <Stat stat='average' amount={average()}></Stat>
-      <Percent text='positive' amount={positivePercent()}></Percent>
+      <StatisticLine text='good' value={good}></StatisticLine>
+      <StatisticLine text='neutral' value={neutral}></StatisticLine>
+      <StatisticLine text='bad' value={bad}></StatisticLine>
+      <StatisticLine text='all' value={all}></StatisticLine>
+      <StatisticLine text='average' value={average()}></StatisticLine>
+      <StatisticLine text='positive' value={positivePercent() + '%'}></StatisticLine>
     </>
   )
 }
