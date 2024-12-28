@@ -35,9 +35,15 @@ const Percent = ({ text, amount }) => {
 }
 
 const Statistics = ({ good, neutral, bad, all}) => {
+
   const average = () => (good - bad) / all
   const positivePercent = () => (good / all) * 100
   
+  if (good === 0 && neutral === 0 && bad === 0 && all === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  }
   return (
     <>
       <Stat stat='good' amount={good}></Stat>
@@ -51,7 +57,6 @@ const Statistics = ({ good, neutral, bad, all}) => {
 }
 
 const App = () => {
-  // guarda los clics de cada botón en su propio estado
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
@@ -70,7 +75,7 @@ const App = () => {
     setBad(bad + 1)
     setAll(all + 1)
   }
-  
+
   return (
     <div>
       <Header text='give feedback'></Header>
