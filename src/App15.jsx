@@ -31,31 +31,33 @@ const Total = (props) => {
 }
 
 
-const App14 = () => {
-  const exercise = 'Exercise 1.4'
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+const App15 = () => {
+  const exercise = 'Exercise 1.5'
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
     <div>
-      <Header course={course} exercise={exercise}></Header>
-      <Content parts={parts}></Content>
-      <Total parts={parts}></Total>
+      <Header course={course.name} exercise={exercise}></Header>
+      <Content parts={course.parts}></Content>
+      <Total parts={course.parts}></Total>
     </div>
   )
 }
 
-export default App14
+export default App15
