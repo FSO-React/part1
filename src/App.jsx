@@ -18,10 +18,26 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
+  // estado de seleccion
   const [selected, setSelected] = useState(0)
+  
+  // estado de los votos
+  let template = {}
+  anecdotes.forEach((_, index) => {
+    template[index] = 0
+  }) 
+  const [votes, setVotes] = useState(template)
+  
+  console.log('seleccionado:', selected, ' | votos:', votes[selected])
+  console.log(votes)
 
   function getRandomIndex(param) {
     return Math.floor(Math.random() * param);
+  }
+
+  const handleClickVote = () => {
+    const newVotes = { ...votes, [selected]: votes[selected] + 1}
+    setVotes(newVotes)
   }
 
   const handleClickAnecdote = () => {
@@ -34,7 +50,10 @@ const App = () => {
     <>
       <div>
         {anecdotes[selected]}
+        <br />
+        has {votes[selected]} votes.
       </div>
+      <Button onClick={handleClickVote} text='vote'></Button>
       <Button onClick={handleClickAnecdote} text='next anecdote'></Button>
     </>
   )
